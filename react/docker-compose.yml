@@ -3,8 +3,8 @@ version: '3'
 
 # アプリケーションで動かすための各要素
 services:
-  # コンテナ名
-  node:
+  # サービス名
+  react_node_service:
     # 起動するコンテナの設定
     build:
       # ディレクトリの指定
