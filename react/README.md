@@ -8,8 +8,10 @@ docker-compose build
 
 ## reactの環境の作成(一回だけでよい)
 ```
-docker-compose run --rm node sh -c "npm install -g create-react-app && create-react-app react-sample"
+docker-compose run --rm react_node_service sh -c "npm install -g create-react-app && create-react-app react-sample"
 ```
+`react_node_service`の部分はサービス名なので適宜変更すること
+
 すると`react-sample`というディレクトリとサンプルのアプリが作成される。
 
 立ち上げるアプリの名前を変える場合、`create-react-app react-sample`の名前と、
