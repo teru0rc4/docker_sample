@@ -1,6 +1,35 @@
 # django環境の始め方
 djangoを使ったAPサーバ。
 
+## 注意
+今回の環境はサンプルにつき、`settings.py`を`SECRET_KEY`そのまま含めている。
+自分で利用する場合は、
+`test_app`をまるっと削除し、
+composeファイルの`command: python3 manage.py runserver 0.0.0.0:8080`をコメントアウトした上で、
+
+コンテナ内に入って、
+```commandline
+django-admin startproject test_app .
+```
+を実行しsetting.pyを含むアプリを生成、
+setting.pyの以下を変更すること
+``` python
+ALLOWED_HOSTS = ['localhost', '0.0.0.0']
+```
+
+``` python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sample_db',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': 'db',
+        'POST': 3306
+    }
+}
+```
+
 ## imageのビルド
 ```commandline
 docker-compose build --no-cache
