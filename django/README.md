@@ -43,6 +43,34 @@ docker-compose up -d
 ```
 
 ## djangoサーバの起動
+## アプリケーションの作成
+サンプルなので今回は作成済み自分で作る場合は、`test_app`をまるっと削除。
+
+その後コンテナ内に入って、
+```commandline
+django-admin startproject test_app .
+```
+を実行しsetting.pyを含むアプリを生成、
+setting.pyの以下を変更すること
+``` python
+ALLOWED_HOSTS = ['localhost', '0.0.0.0']
+```
+
+``` python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sample_db', --- ここのホスト名はdockerのホスト名と同じにする
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': 'db',
+        'POST': 3306
+    }
+}
+```
+
+
+## appサーバの起動手順
 ホスト側で下記のコマンドを実行してコンテナに入る
 ```commandline
 docker-compose exec django bash
