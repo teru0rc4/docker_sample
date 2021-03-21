@@ -25,7 +25,7 @@ SECRET_KEY = '6gwes9l%&y%43*!nd$t16j2ayyp11b1lbcob&7w77-q+b3vt@u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '0.0.0.0']
 
 
 # Application definition
@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'test_app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sample_db',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': 'db',
+        'POST': 3306
     }
 }
 

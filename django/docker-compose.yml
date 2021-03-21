@@ -21,3 +21,22 @@ services:
       - "8000:8080"
     # Tele-TYpewriter、コンテナ起動後に終了させないための設定
     tty: true
+    depends_on:
+      - db
+
+  # db用
+  db:
+    image: mysql:5.7
+    container_name: mysql_container
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: sample_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      TZ: 'Asia/Tokyo'
+    volumes:
+      - ./mysql:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+    # 文字コードの設定
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci

@@ -1,2 +1,4 @@
 .idea/
 *\.iml
+mysql/
+test_app/__pycache__/*
